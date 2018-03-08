@@ -17,7 +17,7 @@ import javax.swing.Timer;
 import org.iiitb.es103_15.traffic.*;
 
 
-public class TestTraffic8 {
+public class TestTraffic8demo {
 
 	 RoadGrid rg;
 	 ArrayList<Car> cars; 
@@ -67,25 +67,20 @@ public class TestTraffic8 {
 		
 		Road r1, r2, r3, r4, r5, r6, r7, r8, r9, r10;
 		
-		r1 = new SafeRoad(RoadGrid.EAST, i1, i2);
-		r1.setSpeedLimit(100);
-		r2 = new SafeRoad(RoadGrid.SOUTH, i2, i3);
+		r1 = new SmartRoad(RoadGrid.EAST, i1, i2);
+		r2 = new SmartRoad(RoadGrid.SOUTH, i2, i3);
 		r2.setSpeedLimit(100);
-		r3 = new SafeRoad(RoadGrid.SOUTH, i3, i4);
-		r3.setSpeedLimit(100);
-		r4 = new SafeRoad(RoadGrid.EAST, i5, i4);
-		r4.setSpeedLimit(40);
-		r5 = new SafeRoad(RoadGrid.EAST, i6, i5);
-		r5.setSpeedLimit(40);
-		r6 = new SafeRoad(RoadGrid.SOUTH, i7, i6);
-		r6.setSpeedLimit(100);
-		r7 = new SafeRoad(RoadGrid.EAST, i7, i8);
-		r7.setSpeedLimit(40);
-		r8 = new SafeRoad(RoadGrid.SOUTH, i1, i8);
-		r8.setSpeedLimit(100);
-		r9 = new SafeRoad(RoadGrid.EAST, i8, i3);
+		r3 = new SmartRoad(RoadGrid.SOUTH, i3, i4);
+		r4 = new SmartRoad(RoadGrid.EAST, i5, i4);
+		r5 = new SmartRoad(RoadGrid.EAST, i6, i5);
+		r6 = new SmartRoad(RoadGrid.SOUTH, i7, i6);
+		r6.setSpeedLimit(60);
+		r7 = new SmartRoad(RoadGrid.EAST, i7, i8);
+		r8 = new SmartRoad(RoadGrid.SOUTH, i1, i8);
+		r8.setSpeedLimit(10);
+		r9 = new SmartRoad(RoadGrid.EAST, i8, i3);
 		r9.setSpeedLimit(40);
-		r10 = new SafeRoad(RoadGrid.SOUTH, i8, i5);
+		r10 = new SmartRoad(RoadGrid.SOUTH, i8, i5);
 		
 		
 		rg.add(r1);
@@ -99,47 +94,37 @@ public class TestTraffic8 {
 		rg.add(r9);
 		rg.add(r10);
 		
-		TrafficSignal ts1 = new TrafficSignal(i3, 4000);
+		TrafficSignal ts1 = new TrafficSignal(i3, 5000);
 		i3.setTrafficControl(ts1);
 		
-		TrafficSignal ts2 = new TrafficSignal(i8, 4000);
+		TrafficSignal ts2 = new TrafficSignal(i8, 8000);
 		i8.setTrafficControl(ts2);
 		
-/*		Car car1 = new TestCar();
-		//car1.setInitialPos(r8, i1.getCoords(), RoadGrid.SOUTH);
-		//car1.setInitialPos(r1, i1.getCoords(), RoadGrid.EAST);
-		car1.setInitialPos(r1, new Coords(450, 100), RoadGrid.EAST);
-		
-		Car car2 = new TestCar();
-		//car2.setInitialPos(r2, i2.getCoords(), RoadGrid.SOUTH);
-		//car2.setInitialPos(r1, i1.getCoords(), RoadGrid.EAST);
-		car2.setInitialPos(r1, new Coords(550, 100), RoadGrid.EAST);
-	*/	
-		Car car1 = new SmartCar25(1);
+		Car car1 = new SmartCar25();
 		car1.setInitialPos(r1, i1.getCoords(), RoadGrid.EAST);
 		
-		Car car2 = new SmartCar25(2);
+		Car car2 = new TestCar();
 		car2.setInitialPos(r2, i2.getCoords(), RoadGrid.SOUTH);
 		
-		Car car3 = new SmartCar50(3);
+		Car car3 = new TestCar();
 		car3.setInitialPos(r2, i3.getCoords(), RoadGrid.NORTH);
 		
-		Car car4 = new SmartCar50(4);
+		Car car4 = new TestCar();
 		car4.setInitialPos(r4, i4.getCoords(), RoadGrid.WEST);
 		
-		Car car5 = new SmartCar50(5);
+		Car car5 = new SmartCar25();
 		car5.setInitialPos(r5, i5.getCoords(), RoadGrid.WEST);
 		
 		
-		Car car6 = new SmartCar50(6);
+		Car car6 = new SmartCar25();
 		car6.setInitialPos(r6, i6.getCoords(), RoadGrid.NORTH);
 		
-		Car car7 = new TestCar();
+		Car car7 = new TestCar(7);
 		car7.setInitialPos(r7, i7.getCoords(), RoadGrid.EAST);
 		
-		Car car8 = new TestCar();
-		car8.setInitialPos(r10, i8.getCoords(), RoadGrid.SOUTH); 
-		
+		Car car8 = new TestCar(8);
+		car8.setInitialPos(r10, i8.getCoords(), RoadGrid.SOUTH);
+	
 		cars.add(car1);
 		cars.add(car2);
 		cars.add(car3);
@@ -149,7 +134,7 @@ public class TestTraffic8 {
 		cars.add(car7);
 		cars.add(car8);
 		
-
+		
 		for(Car car:cars)
 			rg.add(car);
 		
@@ -199,7 +184,7 @@ public class TestTraffic8 {
 	}
 	
 	public static void main(String[] args) {
-		final TestTraffic8 mainActivity = new TestTraffic8();
+		final TestTraffic8demo mainActivity = new TestTraffic8demo();
 		// start the GUI in the EDT thread
 				SwingUtilities.invokeLater(new Runnable() {
 				    public void run() {
