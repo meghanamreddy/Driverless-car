@@ -8,3 +8,5 @@ The driverless car follows the basic traffic rules which include -
 
 The basic framework of the road network along with helper classes are available as jar files.
 The file TestTraffic8.java needs to be run for testing the code and starting a simulation of a road network with cars.
+
+If a car violates any traffic rules, a penalty is awarded. If and when a car crashes, the car is removed from the simulation and the total score of the car is displayed.
